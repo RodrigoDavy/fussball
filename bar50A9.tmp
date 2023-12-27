@@ -1,6 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5hfsrd6tphca"]
+[gd_scene load_steps=9 format=3 uid="uid://c5hfsrd6tphca"]
 
 [ext_resource type="Script" path="res://BarContainer.gd" id="2_txiqn"]
+
+[sub_resource type="GDScript" id="GDScript_2k34q"]
+script/source = "extends Node3D
+
+var speed = 5.0
+var velocity = Vector3()
+
+func _physics_process(delta):
+	# Handle player input
+	var direction = Vector3.ZERO
+	
+	if Input.is_action_pressed(\"digital_right\"):
+		direction.x += 1
+	if Input.is_action_pressed(\"digital_left\"):
+		direction.x -= 1
+	if Input.is_action_pressed(\"digital_forward\"):
+		direction.z += 1
+	if Input.is_action_pressed(\"digital_back\"):
+		direction.z -= 1
+
+	# Normalize direction and move the character
+	direction = direction.normalized()
+	velocity = direction * speed
+
+	# Move the character
+	move_and_slide()
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l32hi"]
 albedo_color = Color(0.717647, 0.717647, 0.717647, 1)
@@ -24,11 +51,10 @@ radius = 1.0
 height = 5.0
 
 [node name="bar_1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+script = SubResource("GDScript_2k34q")
 
 [node name="BarContainer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("2_txiqn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BarContainer"]

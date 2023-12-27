@@ -24,11 +24,9 @@ radius = 1.0
 height = 5.0
 
 [node name="bar_1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="BarContainer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("2_txiqn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BarContainer"]
