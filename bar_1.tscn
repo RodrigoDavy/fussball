@@ -17,11 +17,11 @@ albedo_color = Color(0.713726, 0, 0.0431373, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hhhoq"]
 radius = 1.0
-height = 5.0
+height = 8.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvkse"]
 radius = 1.0
-height = 5.0
+height = 8.0
 
 [node name="bar_1" type="Node3D"]
 
